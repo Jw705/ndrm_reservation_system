@@ -1,0 +1,180 @@
+/*style.css*/
+
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: skyblue;
+}
+
+.background {
+    background-color: white;
+    height: auto;
+    width: 90%;
+    max-width: 450px;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0px 40px 30px -20px rgba(0, 0, 0, 0.3);
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-weight: 600;
+}
+
+.Calendar>tbody>tr>td>p {
+    font-family: 'Questrial', sans-serif;
+    width: 90%;
+    border-radius: 50%;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}
+
+.pastDay {
+    color: lightgray;
+}
+
+.today {
+    background-color: #F5D042;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+}
+
+.futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+}
+
+.futureDay:hover {
+    background: #eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+    background: #0A174E;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#container {
+    padding: 10px;
+    display: none;
+    flex-flow: row wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.resv {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    text-align: center;
+}
+
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]+span {
+    font-family: 'Questrial', sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+
+    color: rgb(3, 199, 90);
+
+    /* Box */
+    height: 20px;
+    width: 100px;
+    background: white;
+    border: 1px solid #CCCCCC;
+    padding: 9px 0px;
+
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="checkbox"]:checked+span {
+    background: rgb(3, 199, 90);
+    color: white;
+}
+
+input[type="checkbox"]:disabled+span {
+    background-color: #F9F9F9;
+    color: #CCCCCC;
+    border: 1px solid #F9F9F9;
+}
+
+input[type="checkbox"]:disabled+span+br+span {
+    color: #CCCCCC;
+}
+
+.collapsible {
+    background-color: white;
+    color: black;
+    font-weight: 400;
+    border: none;
+    border-bottom: 1px solid #CCCCCC;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: #F9F9F9;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: black;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+#dateChoiceMenu2 {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    color: crimson;
+}
