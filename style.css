@@ -17,6 +17,7 @@ body {
     margin: 0 auto;
     border-radius: 5px;
     box-shadow: 0px 40px 30px -20px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 td {
@@ -83,6 +84,14 @@ td {
 #container {
     padding: 10px;
     display: none;
+    flex-flow: row wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+#container2 {
+    padding: 10px;
+    display: block;
     flex-flow: row wrap;
     gap: 10px;
     justify-content: space-evenly;
@@ -187,6 +196,11 @@ input[type="checkbox"]:disabled+span+br+span {
     color: crimson;
 }
 
+hr{
+    border : 0px;
+    border-top: 1px solid #CCCCCC;
+}
+
 .accountBox {
     display: flex;
     justify-content: space-between;
@@ -199,9 +213,23 @@ input[type="checkbox"]:disabled+span+br+span {
     outline: none;
     font-size: 15px;
 }
+.resvBox {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    font-weight: 400;
+    border: 1px solid #CCCCCC;
+    padding: 18px;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 5px;
+}
 
-.btn {            
-    border: 1px solid #6A679E;
+.btn {              
+    text-decoration: none;       
+    border: 1px solid #6A679E;  
     color: #6A679E;
     padding: 5px;
     border-radius: 5px;
@@ -213,8 +241,9 @@ input[type="checkbox"]:disabled+span+br+span {
     color: white;
 }
 
-.btn_clicked {            
-    border: 1px solid #6A679E;
+.btn_clicked {       
+    text-decoration: none;                
+    border: 1px solid #6A679E;  
     background-color: #6A679E;
     color: white;
     padding: 5px;
@@ -223,5 +252,44 @@ input[type="checkbox"]:disabled+span+br+span {
     transition: .2s;
 }
 .btn_clicked:hover {
+    background-color: #595787;
+}
+
+/*----------------*/
+
+form {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+
+.login {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    font-weight: 700;
+    transition: .2s;
+    width: 75%;
+}
+.login:active,
+.login:focus,
+.login:hover {
+    outline: none;
+    border-bottom-color: #6A679E;
+}
+
+.btn_login {            
+    border: none;
+    width: 75%;
+    background-color: #6A679E;
+    color: white;
+    padding: 15px 0;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+.btn_login:hover {
     background-color: #595787;
 }
