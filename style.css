@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: skyblue;
+    background-color: #AAA2C2;
 }
 
 .background {
@@ -74,7 +74,7 @@ td {
 
 .futureDay.choiceDay,
 .today.choiceDay {
-    background: #0A174E;
+    background: #6A679E;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
@@ -103,28 +103,36 @@ input[type="checkbox"] {
     display: none;
 }
 
-input[type="checkbox"]+span {
+input[type="checkbox"]+span {               /*시간 선택*/
     font-family: 'Questrial', sans-serif;
     font-size: 15px;
     line-height: 24px;
     text-align: center;
 
-    color: rgb(3, 199, 90);
+    
+    background: white;
+    border: 1px solid #CCCCCC;
+    color: #6A679E;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
 
     /* Box */
     height: 20px;
     width: 100px;
-    background: white;
-    border: 1px solid #CCCCCC;
     padding: 9px 0px;
 
     display: inline-block;
     cursor: pointer;
     border-radius: 5px;
 }
+input[type="checkbox"]+span:hover {
+    background-color: #6A679E;
+    color: white;
+}
 
 input[type="checkbox"]:checked+span {
-    background: rgb(3, 199, 90);
+    background-color: #6A679E;
     color: white;
 }
 
@@ -177,4 +185,43 @@ input[type="checkbox"]:disabled+span+br+span {
     font-weight: bold;
     text-align: center;
     color: crimson;
+}
+
+.accountBox {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    font-weight: 400;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 18px;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.btn {            
+    border: 1px solid #6A679E;
+    color: #6A679E;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+.btn:hover {
+    background-color: #6A679E;
+    color: white;
+}
+
+.btn_clicked {            
+    border: 1px solid #6A679E;
+    background-color: #6A679E;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+.btn_clicked:hover {
+    background-color: #595787;
 }
