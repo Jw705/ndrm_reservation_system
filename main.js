@@ -6,6 +6,7 @@ const FileStore = require('session-file-store')(session)
 
 var authRouter = require('./lib/auth');               // 로그인 관련 페이지 연결
 var resvRouter = require('./lib/resv');               // 예약 관련 페이지 연결
+var khtRouter = require('./lib/kht');                 // 관리자 페이지 연결
 var authCheck = require('./lib/authCheck.js');        // 로그인 여부 판단
 var template = require('./lib/template.js');
 
@@ -18,7 +19,7 @@ app.use(session({
   secret: '~~~',
   resave: false,
   saveUninitialized: true,
-  //store:new FileStore(),
+  store:new FileStore(),
 }))
 
 app.get('/', (req, res) => {
@@ -31,9 +32,10 @@ app.get('/', (req, res) => {
   }
 })
 
-// 인증 라우터
+// 라우터
 app.use('/auth', authRouter);
 app.use('/resv', resvRouter);
+app.use('/kht', khtRouter);
 
 /*
 // 메인 페이지

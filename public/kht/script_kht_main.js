@@ -59,13 +59,24 @@ function choiceDate(newDIV) {
         document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
     }
     newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
-    document.getElementById("dateChoiceMenu").innerText = "예약일자 : " + nowMonth.getFullYear() + "-" + leftPad(nowMonth.getMonth() + 1) + "-" + newDIV.innerHTML;
-    document.getElementById("dateChoiceMenu2").innerText = nowMonth.getFullYear() + "-" + leftPad(nowMonth.getMonth() + 1) + "-" + newDIV.innerHTML;
+    var choiceDateValue = nowMonth.getFullYear() + "-" + leftPad(nowMonth.getMonth() + 1) + "-" + newDIV.innerHTML;
+    document.getElementById("dateChoiceMenu").innerText = "예약일자 : " + choiceDateValue;
+    document.getElementById("dateChoiceMenu2").innerText = choiceDateValue;
     document.getElementById("dateChoiceMenu2").style.color = "black";
 
-    document.getElementById("container3").style.display = "block";    // 예약시간 선택창 활성화 
-    collapse(document.getElementById("timeChoiceMenu"));                // 예약시간 메뉴 펼치기
+    //document.getElementById("container3").style.display = "block";    // 예약시간 선택창 활성화 
+    //collapse(document.getElementById("timeChoiceMenu"));                // 예약시간 메뉴 펼치기
 
+    /*
+    db.query('SELECT * FROM reserveTable WHERE date = ?', [checkday], function (error2, results) {
+        console.log(results);
+    });
+    */
+
+
+    console.log(choiceDateValue);
+    
+    window.location.assign(`./${choiceDateValue}`);
 }
 
 // 이전달 버튼 클릭

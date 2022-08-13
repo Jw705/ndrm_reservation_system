@@ -64,6 +64,12 @@ td {
     cursor: pointer;
     border: 1px solid #cccccc;
 }
+.choiceDay {
+    background: #6A679E;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
 
 .futureDay {
     background-color: #FFFFFF;
@@ -232,10 +238,11 @@ hr{
 .resvBox {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
     font-weight: 400;
     border: 1px solid #CCCCCC;
-    padding: 18px;
+    padding: 10px 15px 10px 15px;
     text-align: left;
     outline: none;
     font-size: 15px;
@@ -273,13 +280,20 @@ hr{
     background-color: #595787;
 }
 
-.btn_noborder {              
-    text-decoration: none;       
+.btn_noborder {          
+    border: none;   
+    background-color: transparent;
+    text-decoration: none;  
+    
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+             
     color: #6A679E;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
     transition: .2s;
+
 }
 .btn_noborder:hover {
     background-color: #6A679E;
@@ -305,9 +319,10 @@ hr{
 
 /* ---------- 로그인 관련 css ---------- */
 form {
-    display: flex;
-    padding: 30px;
-    flex-direction: column;
+    display: none;
+    
+    padding: 0;
+    margin :0;
 }
 
 .login {
