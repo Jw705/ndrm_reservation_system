@@ -108,25 +108,29 @@ function sendPost(url, params) {
     form.setAttribute('method', 'post');    // POST 메서드 적용
     form.setAttribute('action', url);	    // 데이터를 전송할 url
 
-    let name = prompt("예약자 이름을 입력해 주세요");
+    let name = prompt("예약자 이름을 입력해 주세요");  
     
-    // params로 들어온 값 추가
-    for ( var key in params) {	// key, value로 이루어진 객체 params
+    // 이름을 입력 받았으면 (취소 누르면 null 반환됨)
+    if (name !== null) {
+        // params로 들어온 값 추가
+        for (var key in params) {	// key, value로 이루어진 객체 params
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden'); //값 입력
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+            form.appendChild(hiddenField);
+        }
+
+        // prompt로 입력받은 값 추가
         var hiddenField = document.createElement('input');
-        hiddenField.setAttribute('type', 'hidden'); //값 입력
-        hiddenField.setAttribute('name', key);
-        hiddenField.setAttribute('value', params[key]);
+        hiddenField.setAttribute('type', 'hidden');
+        hiddenField.setAttribute('name', 'name');
+        hiddenField.setAttribute('value', name);
         form.appendChild(hiddenField);
-    }
-
-    // prompt로 입력받은 값 추가
-    var hiddenField = document.createElement('input');
-    hiddenField.setAttribute('type', 'hidden'); 
-    hiddenField.setAttribute('name', 'name');
-    hiddenField.setAttribute('value', name);
-    form.appendChild(hiddenField);
 
 
-    document.body.appendChild(form);
-    form.submit();	// 전송!
+        document.body.appendChild(form);
+        form.submit();	// 전송!
+    }   
+    
 }

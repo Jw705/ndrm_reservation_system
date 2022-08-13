@@ -317,12 +317,17 @@ hr{
 */
 
 
-/* ---------- 로그인 관련 css ---------- */
-form {
-    display: none;
-    
+.editform {
+    display: inline;    
     padding: 0;
     margin :0;
+}
+/* ---------- 로그인 관련 css ---------- */
+
+.loginform {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
 }
 
 .login {
