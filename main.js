@@ -23,8 +23,8 @@ app.use(session({
 }))
 
 app.get('/', (req, res) => {
-  if (!authCheck.isOwner(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
-    res.redirect('/auth/login');
+  if (!authCheck.isLogin(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
+    res.redirect('/resv/login');
     return false;
   } else {                                      // 로그인 되어있으면 메인 페이지로 이동시킴
     res.redirect('/resv/main');

@@ -109,6 +109,11 @@ td {
     display: none;
     gap: 10px;
 }
+#container_check {
+    padding: 10px;
+    display: block;
+    gap: 10px;
+}
 
 .resv {                     /* 예약 버튼 밑의 글씨*/
     font-size: 0.8em;
@@ -266,7 +271,10 @@ hr{
     color: white;
 }
 
-.btn_clicked {       
+.btn_clicked {      
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;     
+
     text-decoration: none;                
     border: 1px solid #6A679E;  
     background-color: #6A679E;
