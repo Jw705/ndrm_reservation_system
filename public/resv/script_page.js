@@ -1,6 +1,7 @@
 window.onload = function () {     // 웹 페이지가 로드되면 buildCalendar 실행
     buildCalendar();
-    collapse(document.getElementById("dateChoiceMenu"));
+    document.getElementById("container").style.display = "flex";      // 예약내용 관리 메뉴 컨테이너 활성화 
+    collapse(document.getElementById("timeChoiceMenu"));                // 예약내용 관리 메뉴 펼치기
 }
 
 let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달로 초기화
@@ -10,8 +11,9 @@ today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
 
-    let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);     // 이번달 1일
-    let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);  // 이번달 마지막날
+    let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);       // 이번달 1일
+    let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);    // 이번달 마지막날    
+    let checkDate = new Date(document.getElementById("dateChoiceMenu2").innerText); // 선택된 날!
 
     let tbody_Calendar = document.querySelector(".Calendar > tbody");
     document.getElementById("calYear").innerText = nowMonth.getFullYear();             // 연도 숫자 갱신
@@ -42,6 +44,10 @@ function buildCalendar() {
         if (nowDay < today) {                       // 지난날인 경우
             newDIV.className = "pastDay";
         }
+        else if (nowDay.getFullYear() == checkDate.getFullYear() && nowDay.getMonth() == checkDate.getMonth() && nowDay.getDate() == checkDate.getDate()) { // 선택된날인 경우!
+            newDIV.className = "choiceDay";
+            newDIV.onclick = function () { choiceDate(this); }
+        }
         else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우           
             newDIV.className = "today";
             newDIV.onclick = function () { choiceDate(this); }
@@ -53,18 +59,10 @@ function buildCalendar() {
     }
 }
 
-// 날짜 선택
-function choiceDate(newDIV) {
-    if (document.getElementsByClassName("choiceDay")[0]) {                              // 기존에 선택한 날짜가 있으면
-        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
-    }
-    newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
-    var choiceDateValue = nowMonth.getFullYear() + "-" + leftPad(nowMonth.getMonth() + 1) + "-" + newDIV.innerHTML;
-    document.getElementById("dateChoiceMenu").innerText = "예약일자 : " + choiceDateValue;
-    document.getElementById("dateChoiceMenu2").innerText = choiceDateValue;
-    document.getElementById("dateChoiceMenu2").style.color = "black";
-
-    window.location.assign(`./${choiceDateValue}`);     // 날짜 선택시 해당 날짜 페이지로 이동
+// 날짜 선택    // 이 페이지에서는 체크 표시할 필요 없으니까 바로 페이지 전환만 함.
+function choiceDate(newDIV) {   
+    var choiceDateValue = nowMonth.getFullYear() + "-" + leftPad(nowMonth.getMonth() + 1) + "-" + newDIV.innerHTML;    
+    window.location.assign(`./${choiceDateValue}`);
 }
 
 // 이전달 버튼 클릭
@@ -102,4 +100,37 @@ function collapse(element) {
     } else {
         content.style.maxHeight = content.scrollHeight + "px";  // 접혀있는 경우 펼치기
     }
+}
+
+
+// '예약'버튼 클릭시 예약자 이름을 prompt()로 받아서 post로 전송하는 함수
+function sendPost(url, params) {
+    var form = document.createElement('form');
+    form.setAttribute('method', 'post');    // POST 메서드 적용
+    form.setAttribute('action', url);	    // 데이터를 전송할 url
+
+    let name = prompt("예약자 이름을 입력해 주세요");  
+    
+    // 이름을 입력 받았으면 (취소 누르면 null 반환됨)
+    if (name !== null) {
+        // params로 들어온 값 추가
+        for (var key in params) {	// key, value로 이루어진 객체 params
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden'); //값 입력
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+            form.appendChild(hiddenField);
+        }
+
+        // prompt로 입력받은 값 추가
+        var hiddenField = document.createElement('input');
+        hiddenField.setAttribute('type', 'hidden');
+        hiddenField.setAttribute('name', 'name');
+        hiddenField.setAttribute('value', name);
+        form.appendChild(hiddenField);
+
+        document.body.appendChild(form);
+        form.submit();	// 전송!
+    }   
+    
 }

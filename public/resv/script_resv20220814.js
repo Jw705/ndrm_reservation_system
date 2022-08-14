@@ -64,7 +64,9 @@ function choiceDate(newDIV) {
     document.getElementById("dateChoiceMenu2").innerText = choiceDateValue;
     document.getElementById("dateChoiceMenu2").style.color = "black";
 
-    window.location.assign(`./${choiceDateValue}`);     // 날짜 선택시 해당 날짜 페이지로 이동
+    document.getElementById("container").style.display = "flex";    // 예약시간 선택창 활성화 
+    collapse(document.getElementById("timeChoiceMenu"));                // 예약시간 메뉴 펼치기
+    console.log(choiceDateValue);
 }
 
 // 이전달 버튼 클릭
@@ -87,7 +89,22 @@ function leftPad(value) {
     return value;
 }
 
-// 아코디언 메뉴
+var maxCount = 3;								// 카운트 최대값은 2
+var count = 0;   								// 카운트, 0으로 초기화 설정
+function CountChecked(field) { 					// field객체를 인자로 하는 CountChecked 함수 정의
+    if (field.checked) {						// 만약 field의 속성이 checked 라면(사용자가 클릭해서 체크상태가 된다면)
+        count += 1;								// count 1 증가
+    }
+    else {										// 아니라면 (field의 속성이 checked가 아니라면)
+        count -= 1;								// count 1 감소
+    }
+    if (count > maxCount) {						// 만약 count 값이 maxCount 값보다 큰 경우라면
+        alert("최대 3개까지만 선택가능합니다!");	// alert 창을 띄움
+        field.checked = false;						// (마지막 onclick한)field 객체의 checked를 false(checked가 아닌 상태)로 만든다.
+        count -= 1;									// 이때 올라갔던 카운트를 취소처리해야 하므로 count를 1 감소시킨다.
+    }
+}
+
 function collapse(element) {
     var before = document.getElementsByClassName("active")[0]               // 기존에 활성화된 버튼
     if (before && document.getElementsByClassName("active")[0] != element) {  // 자신 이외에 이미 활성화된 버튼이 있으면
