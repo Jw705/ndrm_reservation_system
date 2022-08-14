@@ -64,19 +64,7 @@ function choiceDate(newDIV) {
     document.getElementById("dateChoiceMenu2").innerText = choiceDateValue;
     document.getElementById("dateChoiceMenu2").style.color = "black";
 
-    //document.getElementById("container3").style.display = "block";    // 예약시간 선택창 활성화 
-    //collapse(document.getElementById("timeChoiceMenu"));                // 예약시간 메뉴 펼치기
-
-    /*
-    db.query('SELECT * FROM reserveTable WHERE date = ?', [checkday], function (error2, results) {
-        console.log(results);
-    });
-    */
-
-
-    console.log(choiceDateValue);
-    
-    window.location.assign(`./${choiceDateValue}`);
+    window.location.assign(`./${choiceDateValue}`);     // 날짜 선택시 해당 날짜 페이지로 이동
 }
 
 // 이전달 버튼 클릭
@@ -99,6 +87,7 @@ function leftPad(value) {
     return value;
 }
 
+// 아코디언 메뉴
 function collapse(element) {
     var before = document.getElementsByClassName("active")[0]               // 기존에 활성화된 버튼
     if (before && document.getElementsByClassName("active")[0] != element) {  // 자신 이외에 이미 활성화된 버튼이 있으면

@@ -85,6 +85,7 @@ function leftPad(value) {
     return value;
 }
 
+// 아코디언 메뉴
 function collapse(element) {
     var before = document.getElementsByClassName("active")[0]               // 기존에 활성화된 버튼
     if (before && document.getElementsByClassName("active")[0] != element) {  // 자신 이외에 이미 활성화된 버튼이 있으면
@@ -127,7 +128,6 @@ function sendPost(url, params) {
         hiddenField.setAttribute('name', 'name');
         hiddenField.setAttribute('value', name);
         form.appendChild(hiddenField);
-
 
         document.body.appendChild(form);
         form.submit();	// 전송!
