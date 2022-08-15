@@ -1,4 +1,7 @@
-window.onload = function () {     // 웹 페이지가 로드되면 buildCalendar 실행
+window.onload = function () {     // 웹 페이지가 로드되면 buildCalendar 실행    
+    checkDate = new Date(document.getElementById("dateChoiceMenu2").innerText); // 선택된 날
+    nowMonth = checkDate; // 선택된 날을 달력의 현재 달로 설정
+
     buildCalendar();
     document.getElementById("container").style.display = "flex";      // 예약내용 관리 메뉴 컨테이너 활성화 
     collapse(document.getElementById("timeChoiceMenu"));                // 예약내용 관리 메뉴 펼치기
@@ -7,13 +10,14 @@ window.onload = function () {     // 웹 페이지가 로드되면 buildCalendar
 let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달로 초기화
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
+let todayPlus14 = new Date();
+todayPlus14.setDate(todayPlus14.getDate() + 14);    
 
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
 
     let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);       // 이번달 1일
-    let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);    // 이번달 마지막날    
-    let checkDate = new Date(document.getElementById("dateChoiceMenu2").innerText); // 선택된 날!
+    let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);    // 이번달 마지막날   
 
     let tbody_Calendar = document.querySelector(".Calendar > tbody");
     document.getElementById("calYear").innerText = nowMonth.getFullYear();             // 연도 숫자 갱신
@@ -41,7 +45,7 @@ function buildCalendar() {
             nowRow = tbody_Calendar.insertRow();    // 새로운 행 추가
         }
 
-        if (nowDay < today) {                       // 지난날인 경우
+        if (nowDay < today || nowDay > todayPlus14) {   // 지난날 or 14일 이후는 선택 비활성화
             newDIV.className = "pastDay";
         }
         else if (nowDay.getFullYear() == checkDate.getFullYear() && nowDay.getMonth() == checkDate.getMonth() && nowDay.getDate() == checkDate.getDate()) { // 선택된날인 경우!

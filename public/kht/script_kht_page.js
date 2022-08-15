@@ -1,4 +1,7 @@
-window.onload = function () {     // 웹 페이지가 로드되면 buildCalendar 실행
+window.onload = function () {     // 웹 페이지가 로드되면 buildCalendar 실행    
+    checkDate = new Date(document.getElementById("dateChoiceMenu2").innerText); // 선택된 날
+    nowMonth = checkDate; // 선택된 날을 달력의 현재 달로 설정
+
     buildCalendar();
     document.getElementById("container3").style.display = "block";      // 예약내용 관리 메뉴 컨테이너 활성화 
     collapse(document.getElementById("timeChoiceMenu"));                // 예약내용 관리 메뉴 펼치기
@@ -13,7 +16,6 @@ function buildCalendar() {
 
     let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);       // 이번달 1일
     let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);    // 이번달 마지막날    
-    let checkDate = new Date(document.getElementById("dateChoiceMenu2").innerText); // 선택된 날!
 
     let tbody_Calendar = document.querySelector(".Calendar > tbody");
     document.getElementById("calYear").innerText = nowMonth.getFullYear();             // 연도 숫자 갱신
