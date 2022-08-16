@@ -4,7 +4,6 @@ const session = require('express-session')
 const bodyParser = require('body-parser');
 const FileStore = require('session-file-store')(session)
 
-var authRouter = require('./lib/auth');               // 로그인 관련 페이지 연결
 var resvRouter = require('./lib/resv');               // 예약 관련 페이지 연결
 var khtRouter = require('./lib/kht');                 // 관리자 페이지 연결
 var authCheck = require('./lib/authCheck.js');        // 로그인 여부 판단
@@ -33,7 +32,6 @@ app.get('/', (req, res) => {
 })
 
 // 라우터
-app.use('/auth', authRouter);
 app.use('/resv', resvRouter);
 app.use('/kht', khtRouter);
 
