@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #AAA2C2;
+    background-color: lightslategray;
 }
 
 .background {
@@ -114,67 +114,17 @@ td {
     display: block;
     gap: 10px;
 }
-#container_resv {
-    padding: 10px;
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-    justify-content: space-evenly;
-}
-.resv {                     /* 예약된 시간 버튼 아래 글씨 */
+
+.resv {                     /* 예약 버튼 밑의 글씨*/
     font-size: 0.8em;
     text-align: center;
 }
 
-
-input[type="checkbox"] {
-    display: none;
-}
-
-input[type="checkbox"]+span {               /*시간 선택*/
-    font-family: 'Questrial', sans-serif;
-    font-size: 15px;
-    line-height: 24px;
-    text-align: center;
-
-    
-    background: white;
-    border: 1px solid #CCCCCC;
-    color: #6A679E;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .2s;
-
-    /* Box */
-    height: 20px;
-    width: 100px;
-    padding: 9px 0px;
-
+label {
     display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
-}
-/*
-input[type="checkbox"]+span:hover {
-    background-color: #6A679E;
-    color: white;
-}
-*//*모바일에서 이것때문에 렉걸려서 비활성*/
-
-input[type="checkbox"]:checked+span {
-    background-color: #6A679E;
-    color: white;
+    text-align: center;
 }
 
-input[type="checkbox"]:disabled+span {
-    background-color: #F9F9F9;
-    color: #CCCCCC;
-    border: 1px solid #F9F9F9;
-}
-
-input[type="checkbox"]:disabled+span+br+span {
-    color: #CCCCCC;
-}
 
 .collapsible {
     background-color: white;
@@ -319,30 +269,6 @@ hr{
     /*cursor: pointer;*/
     transition: .2s;
 }
-
-.btn_resv {              
-    font-family: 'Questrial', sans-serif;
-    font-size: 15px;
-    
-    text-decoration: none;  
-    background-color: white;
-    border: 1px solid #CCCCCC;
-    color: #6A679E;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn_disable {              
-    font-family: 'Questrial', sans-serif;
-    font-size: 15px;
-    
-    text-decoration: none;  
-    background-color: #F9F9F9;
-    border: 1px solid #F9F9F9;
-    color: #CCCCCC;
-    padding: 10px;
-    border-radius: 5px;
-}
 /*
 .btnred_clicked:hover {
     background-color: rgb(97, 7, 7);
@@ -354,11 +280,6 @@ hr{
     display: inline;    
     padding: 0;
     margin :0;
-}
-
-.resvform {
-    display: inline-block;
-    text-align: center;
 }
 /* ---------- 로그인 관련 css ---------- */
 

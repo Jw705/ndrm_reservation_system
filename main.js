@@ -7,18 +7,18 @@ const FileStore = require('session-file-store')(session)
 var resvRouter = require('./lib/resv');               // 예약 관련 페이지 연결
 var khtRouter = require('./lib/kht');                 // 관리자 페이지 연결
 var authCheck = require('./lib/authCheck.js');        // 로그인 여부 판단
-var template = require('./lib/template.js');
 
 const app = express()
-const port = process.env.PORT || 3000;
+const PORT = 8001
 
-app.use(express.static('public'));                    // 정적폴더 사용
+console.log('ver 0.9');
+
+app.use('/static', express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret: '~~~',
   resave: false,
   saveUninitialized: true,
-  store:new FileStore(),
 }))
 
 app.get('/', (req, res) => {
@@ -35,6 +35,6 @@ app.get('/', (req, res) => {
 app.use('/resv', resvRouter);
 app.use('/kht', khtRouter);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on the port ${PORT}`)
 })
