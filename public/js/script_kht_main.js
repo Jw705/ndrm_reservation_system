@@ -39,7 +39,7 @@ function buildCalendar() {
             nowRow = tbody_Calendar.insertRow();    // 새로운 행 추가
         }
 
-        if (nowDay < today) {                       // 지난날인 경우
+        if (nowDay < new Date('2022-09-01T00:00:00')||nowDay > new Date('2022-12-31T00:00:00')) {   // 예약불가일자는 비활성화
             newDIV.className = "pastDay";
         }
         else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우           

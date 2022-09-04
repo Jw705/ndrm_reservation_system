@@ -11,7 +11,7 @@ var authCheck = require('./lib/authCheck.js');        // 로그인 여부 판단
 const app = express()
 const PORT = 8001
 
-console.log('ver 0.9');
+console.log('ver 1.0 release 22.09.04');
 
 app.use('/static', express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
